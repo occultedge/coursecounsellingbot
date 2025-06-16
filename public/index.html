@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Occultedge AI Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chatbox {
+      background: white;
+      padding: 20px;
+      width: 95%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #chat {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #fefefe;
+      border-radius: 8px;
+    }
+    .msg { margin: 10px 0; }
+    .user { color: #1a73e8; }
+    .bot { color: #0f9d58; }
+    form { display: flex; gap: 10px; }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+  <!-- ✅ Include DOMPurify to safely render AI's HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+</head>
+<body>
+  <div class="chatbox">
+    <div id="chat"></div>
+    <form id="chatForm">
+      <input type="text" id="userInput" placeholder="Type here..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('userInput');
+    const chat = document.getElementById('chat');
+
+    // 🔍 Detect site type based on URL
+    function detectSiteType() {
+      const url = window.location.href.toLowerCase();
+      if (url.includes("tutor")) return "tutor";
+      if (url.includes("counselor")) return "counselor";
+      if (url.includes("admin")) return "admin";
+      if (url.includes("admission")) return "admissions";
+      return "general";
+    }
+
+    // 📤 Handle message submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      chat.innerHTML += `<div class="msg user"><b>You:</b> ${msg}</div>`;
+      // Intercept link clicks inside the bot reply
+const botLinks = chat.querySelectorAll('.msg.bot a');
+botLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open(this.href, '_blank');
+  });
+});
+
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: msg,
+            siteType: detectSiteType(),
+            origin: window.location.hostname
+          })
+        });
+
+        const data = await res.json();
+        const safeHTML = DOMPurify.sanitize(data.reply); // ✅ Sanitize AI HTML
+        chat.innerHTML += `<div class="msg bot"><b>AI:</b> ${safeHTML}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+
+      } catch (err) {
+        chat.innerHTML += `<div class="msg bot"><b>AI:</b> Error: ${err.message}</div>`;
+      }
+    });
+  </script>
+</body>
+</html>
