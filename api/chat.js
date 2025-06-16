@@ -10,38 +10,52 @@ export default async function handler(req, res) {
     summary: `
 <strong>🎓 Course Counselling by Occultedge</strong>
 <ul>
-  <li>Diplomas and Certifications in Nursing, IT, Agriculture, Education, and Healthcare</li>
+  
+  <li>Diplomas and Certifications in Nursing, IT, Agriculture, Education, Healthcare, Engineering, Business, Data Science, AI, Beauty & Wellness, Culinary Arts, Hospitality, and more</li>
+
   <li>UG/PG Degrees via top Indian universities (Jain, Chandigarh, MGR, DY Patil, etc.)</li>
+  <li>World-class certifications internationally accepted, offered in collaboration with top universities, industry partners, and global organizations</li>
+
   <li>British Online School (K–12) for African students</li>
   <li>1000+ skill courses: Fashion, Retail, Telecom, Beauty, Hotel Management, etc.</li>
   <li>India-based certified internships with practical exposure</li>
+  <li>placement assistance</li>
+  <li>Certificate, Diploma, Degree, and PhD-level programs from renowned Indian universities like Jain University, Sikkim Manipal, Chandigarh University, and more</li>
+
+  
 </ul>
 
 <strong>🌍 Learning Modes:</strong>
 <ul>
-  <li>100% Online (Live Zoom + LMS)</li>
-  <li>Hybrid (Online + Local Mentorship)</li>
+  <li>100% Online (Live Zoom/ Meet weekly lectures by renowened worldclass faculties + state of the art Learning Management System-LMS)</li>
+  <li>Hybrid (Online + Local Mentorship) throigh our franchise centers in 30+ counyries worldwide</li>
   <li>Optional On-campus Training in India</li>
 </ul>
 
 <strong>🛠️ Key Features:</strong>
 <ul>
   <li>Digital course delivery through our platform</li>
+  <li>Hybrid (Online + Local Mentorship) throigh our franchise centers in 30+ counyries worldwide</li>
   <li>Academic support, live sessions, and LMS access</li>
-  <li>Placement support available for many programs</li>
-  <li>Internship + Certification = Better career outcomes</li>
+  <li>Intrnational Placement support available for many programs</li>
+  <li>International Internship + world class Certification = Better career outcomes</li>
 </ul>
 
 <strong>🎯 Who Can Apply:</strong>
 <ul>
   <li>School passouts, working professionals, and career switchers</li>
-  <li>International students from Africa, Asia, America</li>
+  <li>International students from Africa, Asia, America, Europe</li>
 </ul>
 
 📞 <strong>Contact Counsellor:</strong>
 <ul>
   <li>Email: <a href="mailto:info@occultedge.com">info@occultedge.com</a></li>
   <li>WhatsApp: <a href="https://wa.me/919953330039" target="_blank">+91 99533 30039</a></li>
+  <li>To apply for a degree from top Indian universities, please <a href="https://www.occultedge.com/copy-of-university-collaborations" target="_blank">click here to fill the university application form</a>.</li>
+🎓 Looking for hot-selling, job-ready diploma programs in fields like IT, Nursing, Agriculture, and Business?
+
+👉 <a href="https://www.occultedge.com/list-of-courses-apply-now" target="_blank">Click here to view our top courses and apply</a>.
+
 </ul>
     `.trim()
   };
