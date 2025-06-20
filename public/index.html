@@ -116,5 +116,21 @@ botLinks.forEach(link => {
       }
     });
   </script>
+  <!-- Your chatbot HTML above -->
+
+<!-- Safe link-click script -->
+<script>
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('a');
+    if (target && target.href) {
+      e.preventDefault();
+      window.open(target.href, '_blank', 'noopener,noreferrer');
+    }
+  });
+</script>
+
+</body>
+</html>
+
 </body>
 </html>
