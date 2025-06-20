@@ -99,7 +99,7 @@ End your message with:
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
